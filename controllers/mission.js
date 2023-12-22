@@ -69,16 +69,11 @@ exports.affecterMission = async (req, res) => {
 
     try {
 
-
-
         const dataEmployee = await Employee.findById(req.params.idEmployee)
         if (dataEmployee.availability) {
             await Mission.findByIdAndUpdate(req.params.idMission, {
                 $push: { team: req.params.idEmployee }
             })
-
-
-
 
         }
         else {
@@ -88,7 +83,6 @@ exports.affecterMission = async (req, res) => {
 
 
         const dataMission = await Mission.findById(req.params.idMission)
-
         res.status(200).send({ message: "Tâche " + dataMission.task + " est affectée à " + dataEmployee.firstName + " " + dataEmployee.lastName })
 
 
